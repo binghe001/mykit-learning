@@ -41,4 +41,5 @@ public class LockTest{
         //临界区：受保护的资源
         System.out.println("测试submit方法的同步");
     }
+
 }

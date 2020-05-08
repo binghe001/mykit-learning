@@ -51,8 +51,8 @@ public class SumRecursiveMT {
 
     public static long sum(int[] arr) throws Exception {
         int nofProcessors = Runtime.getRuntime().availableProcessors();
-       // ExecutorService executorService = Executors.newFixedThreadPool(4);
-        ExecutorService executorService = Executors.newCachedThreadPool();
+        ExecutorService executorService = Executors.newFixedThreadPool(10);
+        // ExecutorService executorService = Executors.newCachedThreadPool();
 
         RecursiveSumTask task = new RecursiveSumTask(executorService, arr, 0, arr.length);
         long result =  executorService.submit(task).get();
@@ -60,7 +60,7 @@ public class SumRecursiveMT {
     }
 
     public static void main(String[] args) throws Exception {
-        int[] arr = Utils.buildRandomIntArray(1000000);
+        int[] arr = Utils.buildRandomIntArray(10);
         System.out.printf("The array length is: %d\n", arr.length);
 
         long result = sum(arr);
